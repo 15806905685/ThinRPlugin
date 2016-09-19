@@ -15,7 +15,7 @@ R in the Android file, in addition to the styleable type, all fields are int typ
 ***
 Outermost build.gradle add the following dependency:
 
- 	classpath 'com.mogujie.gradle: thinR: 0.0.1'
+ 	classpath   'com.mogujie.gradle:ThinRPlugin:0.0.1'
  
 Add the following code in the inner gradle file:
 

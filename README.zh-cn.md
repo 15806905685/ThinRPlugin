@@ -15,7 +15,7 @@ android中的R文件，除了styleable类型外，所有字段都是int型变量
 ***
 在最外层的build.gradle中加入如下依赖：
 
- 	classpath 'com.mogujie.gradle:thinR:0.0.1'   
+ 	classpath   'com.mogujie.gradle:ThinRPlugin:0.0.1'
  
 在内层的gradle文件中加入如下代码：
 
