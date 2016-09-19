@@ -1,0 +1,5 @@
+#### V 1.0.1
+1.支持android gradle 2.0.0
+2.支持pre_dex优化编译速度
+3.在debug状态下,开启predex时,切割由plugin按包名切变成了都按包名切,所以debug的配置文件的packages项要填groupid:artifactId
+

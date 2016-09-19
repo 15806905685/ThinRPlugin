@@ -1,0 +1,69 @@
+apply plugin: 'com.jfrog.bintray'
+
+def siteUrl = 'https://github.com/mogujie'      // 项目的主页
+def gitUrl = 'https://github.com/mogujie'   // Git仓库的url
+group = "com.mogujie.gradle"  // Maven Group ID for the artifact，一般填你唯一的包名
+version = "0.0.1"
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+
+            project {
+                packaging 'jar'
+                // Add your description here
+                name 'ThinR plugin'    //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'farmerjohn'        //填写的一些基本信息
+                        name 'farmerjohn'
+                        email 'farmercoding@163.com'
+                    }
+                }
+
+
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayApikey
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "ThinR_Gradle_Plugin"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["MIT"]
+        publish = true
+    }
+}
